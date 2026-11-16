@@ -56,7 +56,7 @@ with tab1:
     cat = (data.groupby("category").agg(revenue=("price", "sum"), items=("order_id", "count"),
                                         avg_review=("review_score", "mean")).sort_values("revenue", ascending=False))
     t = cat.head(n_top).sort_values("revenue")
-    avg_all = orders["review_score"].mean()
+    avg_all = data["review_score"].mean()
     fig, ax = plt.subplots(1, 2, figsize=(12, 0.45 * n_top + 2), sharey=True, gridspec_kw={"width_ratios": [1.5, 1]})
     ax[0].barh(t.index, t["revenue"] / 1e6, color=BLUE, height=0.65)
     for y, v in enumerate(t["revenue"] / 1e6):
